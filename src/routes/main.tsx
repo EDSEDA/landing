@@ -1,14 +1,14 @@
-import { ButtonHTMLAttributes, PropsWithChildren } from 'react';
-import cn from 'classnames';
+import { Link } from 'react-router-dom'
 
-import grifonLogo from './assets/grifon.svg'
-import recordingIcon from './assets/recording.svg'
-import cubeIcon from './assets/cube.svg'
-import pinkListIcon from './assets/pink-list.svg'
-import greenBasketIcon from './assets/green-basket.svg'
-import purplePeopleIcon from './assets/purple-people.svg'
-import yellowWalletIcon from './assets/yellow-wallet.svg'
-import arrowRightIcon from './assets/arrow-right.svg'
+import { Button } from '../components/button.tsx'
+
+import recordingIcon from '../assets/recording.svg'
+import cubeIcon from '../assets/cube.svg'
+import pinkListIcon from '../assets/pink-list.svg'
+import greenBasketIcon from '../assets/green-basket.svg'
+import purplePeopleIcon from '../assets/purple-people.svg'
+import yellowWalletIcon from '../assets/yellow-wallet.svg'
+import arrowRightIcon from '../assets/arrow-right.svg'
 
 
 import cashierProcessImage from '/cashier-process.png'
@@ -21,51 +21,13 @@ import ceoPhoto from '/face-stub.jpg'
 import sellerPhoto from '/face-stub.jpg'
 
 
-import './App.css'
+import './main.css'
 
 
-interface ButtonProps extends PropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {
-  href?: string;
-}
+export default function Main () {
 
-const Button = (props: ButtonProps) => {
-  let content = props.children
-
-  if (props.href) {
-    content = (
-      <a className='button_href' href={props.href}>
-        {content}
-      </a>
-    )
-  }
-
-  return (
-    <button {...props} className={cn('button', props.className)}>
-      {content}
-    </button>
-  );
-}
-
-function App() {
-
-  return (
-    <>
-      <header className='header' id='top'>
-        <nav className='navigation'>
-          <a href="#top">
-            <img src={grifonLogo} alt="GrifOn logo"/>
-          </a>
-          <ul className='header-list'>
-            <li className='header-list_item'><a href='#impact'>Эффект от внедрения</a></li>
-            <li className='header-list_item'><a href='#howto'>Как это работает</a></li>
-            <li className='header-list_item'><a href='#proposal'>Наше предложение</a></li>
-            <li className='header-list_item'><a href='#contacts'>Контакты</a></li>
-          </ul>
-          <Button href='#request'>Оставить заявку</Button>
-        </nav>
-      </header>
-
-      <main className='main'>
+    return (
+      <>
         <section className='section'>
           <div className='preview'>
             <h1 className='preview_header'>GrifOn</h1>
@@ -201,7 +163,7 @@ function App() {
               <input className='form_input' name='email' placeholder='EMAIL'/>
               <input className='form_input __long' name='comment' placeholder='КОММЕНТАРИЙ'/>
             </div>
-            <p className='form_caption'>Отправляя заявку, соглашаюсь с <a className='__link' href='/policy'>политикой конфиденциальности</a></p>
+            <p className='form_caption'>Отправляя заявку, соглашаюсь с <Link to='/policy'>политикой конфиденциальности</Link></p>
             <div className='form_submit'>
               <Button className='form_submit-button' type='submit'>
                 <img className='button_big-right-arrow' src={arrowRightIcon}/>
@@ -233,17 +195,6 @@ function App() {
             </div>
           </div>
         </section>
-      </main>
-
-      <footer className='footer'>
-        <a href="#top">
-          <img src={grifonLogo} className="logo" alt="GrifOn logo"/>
-        </a>
-        <p>© 2024 ООО Грифон Вижн. Все права защищены.</p>
-        <a href='/policy'>Политика конфиденциальности</a>
-      </footer>
     </>
-  )
+  );
 }
-
-export default App

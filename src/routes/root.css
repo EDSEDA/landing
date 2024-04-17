@@ -1,0 +1,43 @@
+.header {
+    padding: 48px 150px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navigation > * {
+    flex-shrink: 0;
+}
+
+.header-list {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.header-list_item {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.main {
+    padding: 0 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 200px;
+}
+
+.footer {
+  margin-top: 150px;
+  padding: 30px 150px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+
+  border-top: 1px solid white;
+}
