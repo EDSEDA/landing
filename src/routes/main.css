@@ -12,6 +12,7 @@
 }
 
 .preview {
+    margin-top: 70px;
     width: 100%;
     display: grid;
     column-gap: 60px;
@@ -26,9 +27,11 @@
 .preview_text {
     font-size: 24px;
     margin-bottom: 50px;
+    text-align: center;
 }
 
 .preview_img {
+    box-sizing: border-box;
     grid-column: 2;
     grid-row: 1 / 3;
     max-width: 100%;
@@ -38,9 +41,10 @@
 }
 
 .tags {
+    box-sizing: border-box;
     padding: 20px 20px 0 0;
     border-radius: 20px;
-    margin-top: -50px;
+    margin-top: -30px;
     align-self: flex-start;
     min-width: 70%;
     width: min-content;
@@ -166,11 +170,8 @@
     box-shadow: 0px 0px 40px 5px rgba(21, 20, 251, 0.21);
 }
 
-.proposal_header {
-    margin-bottom: 100px;
-}
-
 .proposal-list, .learning-list {
+    width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 50px;
@@ -188,8 +189,13 @@
     border-radius: 30px;
 }
 
+.proposal-card {
+    margin-top: 100px;
+}
+
 .proposal-card_img {
     width: 100%;
+    max-width: 400px;
     position: relative;
     left: -60px;
     top: -100px;
@@ -244,7 +250,7 @@
 }
 
 .form_input-container {
-    padding: 15px;
+    padding: 15px 0;
     box-sizing: border-box;
 }
 
@@ -297,10 +303,12 @@
     border: 2px solid rgba(52, 112, 255);
     box-shadow: 0px 0px 20px 5px rgba(21, 20, 251, 0.21);
     cursor: pointer;
+    width: 545px;
+    display: flex;
+    justify-content: end;
 }
 
 .button_big-right-arrow {
-    margin-left: 300px;
     width: 160px;
     height: 40px;
 }
@@ -348,4 +356,159 @@
 .contacts-card_contact {
     font-size: 24px;
     color: #3470FF;
+}
+
+@media screen and (max-width: 1200px) {
+    .preview {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 40px;
+    }
+
+    .preview_header {
+        font-size: 48px;
+    }
+
+    .preview_text {
+        font-size: 18px;
+        margin-bottom: 40px;
+    }
+
+    .preview_img {
+        width: 100%;
+    }
+
+    .tags {
+        gap: 10px;
+        min-width: unset;
+        width: 100%;
+        padding-right: 0;
+    }
+
+    .tag-card {
+        flex-direction: column;
+    }
+
+    .tag-card_header {
+        font-size: 20px;
+        margin-top: 10px;
+    }
+
+    .tag-card_text {
+        font-size: 14px;
+    }
+}
+
+
+@media screen and (max-width: 1000px) {
+    .section_header {
+        font-size: 32px;
+        text-align: center;
+    }
+
+    .effect-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        gap: 60px 170px;
+    }
+
+    .effect-card {
+        grid: 92px / 92px 1fr;
+        gap: 20px;
+    }
+
+    .effect-card_caption {
+        font-size: 14px;
+    }
+
+    .appearance {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+        padding: 20px;
+        gap: 15px;
+        text-align: center;
+    }
+
+    .appearance_header {
+        font-size: 24px;
+    }
+
+    .appearance_text {
+        font-size: 16px;
+    }
+
+    .proposal-list, .learning-list {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 40px;
+    }
+
+    .proposal-card, .learning-card {
+        padding: 30px;
+    }
+
+    .proposal-card_header, .learning-card_header {
+        font-size: 24px;
+    }
+
+    .proposal-card_text, .learning-card_item {
+        font-size: 16px;
+    }
+
+    .proposal-card {
+        margin-top: 50px;
+    }
+
+    .proposal-card_img {
+        left: -30px;
+        top: -50px;
+    }
+
+    .request_caption {
+        font-size: 16px;
+    }
+
+    .form_inputs {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: 40px;
+    }
+
+    .form_input-container.__long {
+        grid-column: unset;
+    }
+
+    .form_input {
+        font-size: 20px;
+    }
+
+    .form_input-error {
+        font-size: 14px;
+    }
+
+    .contacts-card {
+        grid-template-columns: 120px 1fr;
+        gap: 30px;
+    }
+
+    .contacts-card_img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .contacts-card_info {
+        gap: 10px;
+    }
+
+    .contacts-card_name {
+        font-size: 18px;
+    }
+    
+    .contacts-card_position,
+    .contacts-card_contact {
+        font-size: 14px;
+    }
 }

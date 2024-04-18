@@ -198,7 +198,7 @@ export default function Main () {
             </section>
 
             <section className='section' id='proposal'>
-              <h2 className='section_header proposal_header'>Наше предложение</h2>
+              <h2 className='section_header'>Наше предложение</h2>
               <div className='proposal-list'>
                 <div className='proposal-card'>
                   <img className='proposal-card_img' src={sphere1Image} loading='lazy'/>

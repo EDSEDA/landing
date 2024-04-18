@@ -7,6 +7,7 @@ import { Button } from "../components/button";
 import Popup, { PopupType } from "../components/popup";
 
 import grifonLogo from '../assets/grifon.svg'
+import sticksIcon from '../assets/sticks.svg'
 
 import './root.css'
 
@@ -15,24 +16,28 @@ const Root = observer(() => {
 
     return (
         <>
+            <div id='top'/>
+
             {store.popupType !== PopupType.INVISIBLE && (
                 <div className="popup-container">
                     <Popup popupType={store.popupType}/>
                 </div>
             )}
 
-            <header className='header' id='top'>
+            <header className='header'>
                 <nav className='navigation'>
-                <Link smooth to="/#top">
-                    <img src={grifonLogo} alt="GrifOn logo"/>
-                </Link>
-                <ul className='header-list'>
-                    <li className='header-list_item'><Link smooth to='/#impact'>Эффект от внедрения</Link></li>
-                    <li className='header-list_item'><Link smooth to='/#howto'>Как это работает</Link></li>
-                    <li className='header-list_item'><Link smooth to='/#proposal'>Наше предложение</Link></li>
-                    <li className='header-list_item'><Link smooth to='/#contacts'>Контакты</Link></li>
-                </ul>
-                <Button href='/#request'>Оставить заявку</Button>
+                    <Link smooth to="/#top">
+                        <img className="main-logo" src={grifonLogo} alt="GrifOn logo"/>
+                    </Link>
+                    <ul className='header-list'>
+                        <li className='header-list_item'><Link smooth to='/#impact'>Эффект от внедрения</Link></li>
+                        <li className='header-list_item'><Link smooth to='/#howto'>Как это работает</Link></li>
+                        <li className='header-list_item'><Link smooth to='/#proposal'>Наше предложение</Link></li>
+                        <li className='header-list_item'><Link smooth to='/#contacts'>Контакты</Link></li>
+                    </ul>
+                    <Button className="header_request-button" href='/#request'>Оставить заявку</Button>
+
+                    <img className="header_sticks" src={sticksIcon}/>
                 </nav>
             </header>
     
@@ -42,10 +47,10 @@ const Root = observer(() => {
 
             <footer className='footer'>
                 <Link smooth to="/#top">
-                <img src={grifonLogo} className="logo" alt="GrifOn logo"/>
+                <img src={grifonLogo} className="main-logo" alt="GrifOn logo"/>
                 </Link>
                 <p>© 2024 ООО Грифон Вижн. Все права защищены.</p>
-                <Link smooth to='/policy#top'>Политика конфиденциальности</Link>
+                <Link className="policy-link" smooth to='/policy#top'>Политика конфиденциальности</Link>
             </footer>
         </>
     );

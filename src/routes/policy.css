@@ -15,3 +15,13 @@
 .policy_list-item {
     list-style: inside;
 }
+
+@media screen and (max-width: 1200px) {
+    .policy_header {
+        font-size: 32px;
+    }
+
+    .policy_text {
+        font-size: 20px;
+    }
+}
