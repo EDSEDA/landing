@@ -1,4 +1,5 @@
 import { HashLink as Link } from 'react-router-hash-link'
+import { useState } from 'react'
 
 import { useStore } from '../lib/store.ts'
 
@@ -25,16 +26,54 @@ import sellerPhoto from '/face-stub.jpg'
 
 
 import './main.css'
+import classNames from 'classnames'
+
+const mailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+
+export interface FormFields {
+  name?: string;
+  mail?: string;
+  comment?: string;
+}
+
+function validateFormData({ name, mail }: FormFields): FormFields {
+
+  const errors: FormFields = {};
+
+  console.log(mail)
+
+  if (!name || !name.trim()) {
+    errors.name = 'Это обязательное поле';
+  }
+
+  if (!mail || !mail.trim()) {
+    errors.mail = 'Это обязательное поле';
+  } else if (!mail.toLowerCase().match(mailRegex)) {
+    errors.mail = 'Неверный формат';
+  }
+
+  return errors;
+}
 
 
 export default function Main () {
 
     const { store } = useStore();
+    const [formErrors, setFormErrors] = useState<FormFields>({});
 
     const onRequestSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
         e.preventDefault();
 
-        // validate
+        const data = Object.fromEntries(
+          new FormData(e.target as HTMLFormElement)
+        ) as unknown as FormFields;
+        const errors = validateFormData(data);
+
+        if (errors.name || errors.mail || errors.comment) {
+          setFormErrors(errors);
+          return;
+        }
 
         try {
           await fetch('/request', {
@@ -43,11 +82,7 @@ export default function Main () {
               'Accept': 'application/json',
               'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-              name: '1',
-              mail: '2',
-              comment: '3',
-            }),
+            body: JSON.stringify(data),
           });
           store.setPopupType(PopupType.REQUEST_SENT);
         } catch {
@@ -200,9 +235,24 @@ export default function Main () {
               <p className='request_caption'>Заинтересовало сотрудничество или просто хотите пообщаться с нашей командой? Заполните форму, указанную ниже или свяжитесь с нами</p>
               <form className='form' onSubmit={onRequestSubmit}>
                 <div className='form_inputs'>
-                  <input className='form_input' name='name' placeholder='ИМЯ'/>
-                  <input className='form_input' name='email' placeholder='EMAIL'/>
-                  <input className='form_input __long' name='comment' placeholder='КОММЕНТАРИЙ'/>
+                  <div className='form_input-container'>
+                    <input className={classNames('form_input', formErrors.name && '__error')} name='name' placeholder='ИМЯ'/>
+                    {formErrors.name && (
+                      <p className='form_input-error'>{formErrors.name}</p>
+                    )}
+                  </div>
+                  <div className='form_input-container'>
+                    <input className={classNames('form_input', formErrors.mail && '__error')} name='mail' placeholder='EMAIL'/>
+                    {formErrors.mail && (
+                      <p className='form_input-error'>{formErrors.mail}</p>
+                    )}
+                  </div>
+                  <div className='form_input-container __long'>
+                    <input className={classNames('form_input', formErrors.comment && '__error')} name='comment' placeholder='КОММЕНТАРИЙ'/>
+                    {formErrors.comment && (
+                      <p className='form_input-error'>{formErrors.comment}</p>
+                    )}
+                  </div>
                 </div>
                 <p className='form_caption'>Отправляя заявку, соглашаюсь с <Link className='policy-link' smooth to='/policy#top'>политикой конфиденциальности</Link></p>
                 <div className='form_submit'>

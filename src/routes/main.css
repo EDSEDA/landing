@@ -243,18 +243,32 @@
     gap: 60px 150px;
 }
 
-.form_input {
-    font-size: 24px;
+.form_input-container {
     padding: 15px;
     box-sizing: border-box;
+}
+
+.form_input-container.__long {
+    grid-column: 1 / 3;
+}
+
+.form_input {
+    width: 100%;
+    font-size: 24px;
     border: none;
     border-bottom: 2px solid #3470FF;
     background-color: transparent;
     color: white;
 }
 
-.form_input.__long {
-    grid-column: 1 / 3;
+.form_input.__error {
+    border-bottom-color: red;
+}
+
+.form_input-error {
+    margin-top: 10px;
+    font-size: 20px;
+    color: red;
 }
 
 .form_caption {
