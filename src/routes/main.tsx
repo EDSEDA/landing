@@ -31,9 +31,28 @@ export default function Main () {
 
     const { store } = useStore();
 
-    const onRequestSubmit: React.FormEventHandler<HTMLFormElement> = e => {
+    const onRequestSubmit: React.FormEventHandler<HTMLFormElement> = async e => {
         e.preventDefault();
-        store.setPopupType(PopupType.REQUEST_SENT)
+
+        // validate
+
+        try {
+          await fetch('/request', {
+            method: 'POST',
+            headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              name: '1',
+              mail: '2',
+              comment: '3',
+            }),
+          });
+          store.setPopupType(PopupType.REQUEST_SENT);
+        } catch {
+          store.setPopupType(PopupType.ERROR);
+        }
     };
 
     return (

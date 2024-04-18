@@ -12,6 +12,7 @@ export enum PopupType {
     INTEGRATION_MORE,
     RECOMMENDATION_MORE,
     STORING_MORE,
+    ERROR,
 }
 
 export interface PopupProps {
@@ -70,6 +71,10 @@ const POPUP_DATA: Record<Exclude<PopupType, PopupType.INVISIBLE>, PoputData> = {
                 <span>При этом мы не храним фотографии наших клиентов. Видео с камер обрабатывается непосредственно внутри магазина и на наши сервера попадают только результаты обработки видеопотока происходящего внутри.</span>
             </>
         )
+    },
+    [PopupType.ERROR]: {
+        header: 'Что-то пошло не так',
+        text: 'Но мы уже это чиним. Попробуйте зайти к нам еще раз через час',
     },
 };
 
