@@ -12,6 +12,7 @@ import greenBasketIcon from '../assets/green-basket.svg'
 import purplePeopleIcon from '../assets/purple-people.svg'
 import yellowWalletIcon from '../assets/yellow-wallet.svg'
 import arrowRightIcon from '../assets/arrow-right.svg'
+import outlineArrowIcon from '../assets/outline-arrow.svg'
 
 import cashierProcessImage from '/cashier-process.png'
 import howtoScheme from '/howto-scheme.svg'
@@ -149,16 +150,28 @@ export default function Main () {
                   <img className='proposal-card_img' src={sphere1Image} loading='lazy'/>
                   <h3 className='proposal-card_header'>Сбор и хранение данных</h3>
                   <p className='proposal-card_text'>Идентифицируем каждого клиента, собираем и анализируем данные о покупках клиентов</p>
+                  <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.STORING_MORE)}>
+                    Узнать больше
+                    <img className='proposal-card_more-icon' src={outlineArrowIcon}/>
+                  </Button>
                 </div>
                 <div className='proposal-card'>
                   <img className='proposal-card_img' src={sphere2Image} loading='lazy'/>
                   <h3 className='proposal-card_header'>Персональные рекомендации</h3>
                   <p className='proposal-card_text'>Выдаем персональные рекомендации для каждого клиента с гибкой системой изменения</p>
+                  <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.RECOMMENDATION_MORE)}>
+                    Узнать больше
+                    <img className='proposal-card_more-icon' src={outlineArrowIcon}/>
+                  </Button>
                 </div>
                 <div className='proposal-card'>
                   <img className='proposal-card_img' src={sphere3Image} loading='lazy'/>
                   <h3 className='proposal-card_header'>Интеграция в кассовую систему</h3>
                   <p className='proposal-card_text'>По запросу полностью интегрируемся в вашу систему, делаем дизайн рекомендаций для вашего бренда</p>
+                  <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.INTEGRATION_MORE)}>
+                    Узнать больше
+                    <img className='proposal-card_more-icon' src={outlineArrowIcon}/>
+                  </Button>
                 </div>
               </div>
             </section>

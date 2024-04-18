@@ -5,21 +5,23 @@ import { HashLink as Link } from "react-router-hash-link";
 
 interface ButtonProps extends PropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {
     href?: string;
+    clear?: boolean;
 }
 
 export const Button = (props: ButtonProps) => {
-    let content = props.children
+    const { children, href, clear, className } = props;
+    let content = children
 
-    if (props.href) {
+    if (href) {
         content = (
-            <Link className='button_href' to={props.href}>
+            <Link className='button_href' to={href}>
                 {content}
             </Link>
         )
     }
 
     return (
-        <button {...props} className={cn('button', props.className)}>
+        <button {...props} className={cn(!clear && 'button', className)}>
         {content}
         </button>
     );

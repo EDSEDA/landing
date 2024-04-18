@@ -177,6 +177,7 @@
 }
 
 .proposal-card, .learning-card {
+    display: grid;
     position: relative;
     box-sizing: border-box;
     padding: 40px 30px;
@@ -205,6 +206,20 @@
 .proposal-card_text, .learning-card_item {
     font-size: 20px;
     font-weight: 300;
+}
+
+.proposal-card_more {
+    margin-top: 40px;
+    font-size: 20px;
+    font-weight: 600;
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.proposal-card_more-icon {
+    width: 26px;
+    height: 26px;
 }
 
 .request_header {
