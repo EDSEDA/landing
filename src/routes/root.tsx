@@ -1,38 +1,54 @@
-import { Link, Outlet } from "react-router-dom";
+import { Outlet } from "react-router-dom";
+import { HashLink as Link } from "react-router-hash-link";
+import { observer } from "mobx-react-lite";
+
+import { useStore } from "../lib/store";
 import { Button } from "../components/button";
+import Popup, { PopupType } from "../components/popup";
+
 import grifonLogo from '../assets/grifon.svg'
 
 import './root.css'
 
-export default function Root() {
+const Root = observer(() => {
+    const { store } = useStore();
+
     return (
         <>
+            {store.popupType !== PopupType.INVISIBLE && (
+                <div className="popup-container">
+                    <Popup popupType={store.popupType}/>
+                </div>
+            )}
+
             <header className='header' id='top'>
                 <nav className='navigation'>
-                <a href="#top">
+                <Link smooth to="/#top">
                     <img src={grifonLogo} alt="GrifOn logo"/>
-                </a>
+                </Link>
                 <ul className='header-list'>
-                    <li className='header-list_item'><a href='#impact'>Эффект от внедрения</a></li>
-                    <li className='header-list_item'><a href='#howto'>Как это работает</a></li>
-                    <li className='header-list_item'><a href='#proposal'>Наше предложение</a></li>
-                    <li className='header-list_item'><a href='#contacts'>Контакты</a></li>
+                    <li className='header-list_item'><Link smooth to='/#impact'>Эффект от внедрения</Link></li>
+                    <li className='header-list_item'><Link smooth to='/#howto'>Как это работает</Link></li>
+                    <li className='header-list_item'><Link smooth to='/#proposal'>Наше предложение</Link></li>
+                    <li className='header-list_item'><Link smooth to='/#contacts'>Контакты</Link></li>
                 </ul>
-                <Button href='#request'>Оставить заявку</Button>
+                <Button href='/#request'>Оставить заявку</Button>
                 </nav>
             </header>
     
             <main className='main'>
                 <Outlet/>
             </main>
-    
+
             <footer className='footer'>
-                <a href="#top">
+                <Link smooth to="/#top">
                 <img src={grifonLogo} className="logo" alt="GrifOn logo"/>
-                </a>
+                </Link>
                 <p>© 2024 ООО Грифон Вижн. Все права защищены.</p>
-                <Link to='/policy'>Политика конфиденциальности</Link>
+                <Link smooth to='/policy#top'>Политика конфиденциальности</Link>
             </footer>
         </>
     );
-}
+});
+
+export default Root;

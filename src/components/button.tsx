@@ -1,6 +1,7 @@
 import { PropsWithChildren, ButtonHTMLAttributes } from "react";
 import cn from 'classnames'
 import './button.css';
+import { HashLink as Link } from "react-router-hash-link";
 
 interface ButtonProps extends PropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {
     href?: string;
@@ -11,9 +12,9 @@ export const Button = (props: ButtonProps) => {
 
     if (props.href) {
         content = (
-        <a className='button_href' href={props.href}>
-            {content}
-        </a>
+            <Link className='button_href' to={props.href}>
+                {content}
+            </Link>
         )
     }
 

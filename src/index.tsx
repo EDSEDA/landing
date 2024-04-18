@@ -7,10 +7,11 @@ import {
 
 import Root from './routes/root.tsx';
 import Main from './routes/main.tsx';
+import Policy from './routes/policy.tsx';
 import ErrorPage from './routes/error.tsx';
 
 import './index.css';
-import Policy from './routes/policy.tsx';
+import { Context, Store } from './lib/store.ts';
 
 
 const router = createBrowserRouter([
@@ -31,8 +32,12 @@ const router = createBrowserRouter([
   },
 ]);
 
+const store = new Store();
+
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
+    <Context.Provider value={{store}}>
+      <RouterProvider router={router}/>
+    </Context.Provider>
   </React.StrictMode>,
 )
