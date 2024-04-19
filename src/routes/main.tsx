@@ -70,9 +70,9 @@ export default function Main () {
           new FormData(e.target as HTMLFormElement)
         ) as unknown as FormFields;
         const errors = validateFormData(data);
+        setFormErrors(errors);
 
         if (errors.name || errors.mail || errors.comment) {
-          setFormErrors(errors);
           return;
         }
 
