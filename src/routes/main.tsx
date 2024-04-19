@@ -17,6 +17,7 @@ import outlineArrowIcon from '../assets/outline-arrow.svg'
 
 import cashierProcessImage from '/cashier-process.png'
 import howtoScheme from '/howto-scheme.svg'
+import howtoVerticalScheme from '/howto-scheme-vertical.svg'
 import cashierImage from '/cashier.svg'
 import sphere1Image from '/sphere1.svg'
 import sphere2Image from '/sphere2.svg'
@@ -153,7 +154,8 @@ export default function Main () {
 
             <section className='section' id='howto'>
               <h2 className='section_header' style={{marginBottom: 80}}>Как это работает?</h2>
-              <img className='howto-scheme' src={howtoScheme} loading='lazy'/>
+              <img className='howto-scheme __horizontal' src={howtoScheme} loading='lazy'/>
+              <img className='howto-scheme __vertical' src={howtoVerticalScheme} loading='lazy'/>
             </section>
 
             <section className='section appearance'>

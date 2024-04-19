@@ -170,6 +170,20 @@
     box-shadow: 0px 0px 40px 5px rgba(21, 20, 251, 0.21);
 }
 
+.howto-scheme.__vertical {
+    display: none;
+}
+
+@media screen and (max-width: 800px) {
+    .howto-scheme.__vertical {
+        display: block;
+    }
+
+    .howto-scheme.__horizontal {
+        display: none;
+    }
+}
+
 .proposal-list, .learning-list {
     width: 100%;
     display: grid;
