@@ -1,13 +1,32 @@
-from node:20
+FROM node:20 as build
 
-WORKDIR /landing
+WORKDIR /build
 
-RUN npm run buld
+COPY package.json .
+RUN npm i
 
-COPY dist dist
-COPY .env .env
-COPY ssl ssl
+COPY public/ public/
+COPY src/ src/
+COPY .eslintrc.cjs .
+COPY index.html .
+COPY tsconfig.json .
+COPY tsconfig.node.json .
+COPY vite.config.ts .
+
+RUN npm run build
+
+FROM node:20
+
+WORKDIR /app
+
+COPY server.package.json package.json
+RUN npm i
+
+COPY --from=build /build/dist/ dist/
+COPY ssl/ ssl/
+COPY server.js .
+COPY .env .
 
 EXPOSE 443
 
-CMD [ "NODE_ENV=prod node start.js" ]
+CMD [ "npm", "run", "start:prod" ]

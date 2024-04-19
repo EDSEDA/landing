@@ -13,4 +13,5 @@
 
 ### Production build
 
-- `docker build && docker up -d`
+- `sudo docker build --tag 'landing' .`
+- `sudo docker run -dp 127.0.0.1:443:443 'landing'`
