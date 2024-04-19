@@ -408,6 +408,7 @@
 
     .tag-card {
         flex-direction: column;
+        padding: 15px;
     }
 
     .tag-card_header {
@@ -534,5 +535,17 @@
     .contacts-card_position,
     .contacts-card_contact {
         font-size: 14px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .contacts-card {
+        grid-template: 1fr / auto;
+    }
+}
+
+@media screen and (max-width: 350px) {
+    .tags {
+        grid-template: 1fr / auto;
     }
 }

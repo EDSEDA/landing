@@ -82,3 +82,21 @@
         font-size: 14px;
     }
 }
+
+@media screen and (max-width: 500px) {
+
+    .popup:not(.__big) {
+        width: 100%;
+        height: 100dvh;
+        overflow: auto;
+        max-width: unset;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .popup:not(.__big) .popup_close {
+        top: 11px;
+        right: 11px;
+    }
+}
