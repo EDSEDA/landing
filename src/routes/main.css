@@ -237,6 +237,10 @@
     cursor: pointer;
 }
 
+.proposal-card_more:hover {
+    filter: invert(57%) sepia(100%) saturate(5098%) hue-rotate(212deg) brightness(100%) contrast(102%);
+}
+
 .proposal-card_more-icon {
     width: 26px;
     height: 26px;
@@ -301,8 +305,8 @@
     text-decoration: underline;
 }
 
-.__link {
-    text-decoration: underline;
+.policy-link:hover {
+    color: #3872FF;
 }
 
 .form_submit {
@@ -370,6 +374,7 @@
 .contacts-card_contact {
     font-size: 24px;
     color: #3470FF;
+    cursor: text;
 }
 
 @media screen and (max-width: 1200px) {
@@ -479,6 +484,10 @@
     .proposal-card_img {
         left: -30px;
         top: -50px;
+    }
+
+    .proposal-card_more {
+        margin-top: 20px;
     }
 
     .request_caption {

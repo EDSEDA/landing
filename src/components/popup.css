@@ -15,16 +15,13 @@
     
     box-sizing: border-box;
     padding: 30px 40px;
+    max-width: 400px;
 
     border-radius: 15px;
     background: rgba(17, 24, 51, 1);
 }
 
-.__1, .__5 {
-    max-width: 400px;
-}
-
-.__2, .__3, .__4 {
+.popup.__big {
     max-width: 800px;
 }
 
@@ -50,11 +47,38 @@
     position: absolute;
     top: -11px;
     right: -11px;
-    width: 15px;
-    height: 15px;
+    width: 17px;
+    height: 17px;
 
     padding: 11px;
     background-color: #3470FF;
     border-radius: 50%;
     cursor: pointer;
+}
+
+.popup_close:hover {
+    background-color: #0035B5;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .popup.__big {
+        width: 100%;
+        height: 100dvh;
+        overflow: auto;
+        max-width: unset;
+    }
+
+    .popup.__big .popup_close {
+        top: 11px;
+        right: 11px;
+    }
+
+    .popup_header {
+        font-size: 20px;
+    }
+
+    .popup_text {
+        font-size: 14px;
+    }
 }

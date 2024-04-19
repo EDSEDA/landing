@@ -33,6 +33,10 @@
     white-space: nowrap;
 }
 
+.list_item:hover {
+    color: #3872FF;
+}
+
 .side-menu-icon {
     display: none;
     flex-direction: column;

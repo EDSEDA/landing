@@ -27,7 +27,7 @@ export interface PoputData {
 const POPUP_DATA: Record<Exclude<PopupType, PopupType.INVISIBLE>, PoputData> = {
     [PopupType.REQUEST_SENT]: {
         header: 'Заявка отправлена',
-        text: 'Ваша заявка отправлена. В течение 2 рабочих дней с вами  свяжется нащ специалист для обсуждения вашего вопроса',
+        text: 'Ваша заявка отправлена. В течение 2 рабочих дней с вами  свяжется наш специалист для обсуждения вашего вопроса',
     },
     [PopupType.INTEGRATION_MORE]: {
         header: 'Интеграция в кассовую систему',
@@ -86,13 +86,18 @@ export default function Popup({ popupType }: PopupProps) {
 
     const { store } = useStore();
     const { header, text } = POPUP_DATA[popupType];
+    const isBig = [
+        PopupType.INTEGRATION_MORE,
+        PopupType.RECOMMENDATION_MORE,
+        PopupType.STORING_MORE,
+    ].includes(popupType);
 
     const close = () => store.setPopupType(PopupType.INVISIBLE);  
 
     return (
         <>
             <div className='popup-overlay' onClick={close}/>
-            <article className={classNames('popup', `__${popupType}`)}>
+            <article className={classNames('popup', isBig && '__big')}>
                 <h1 className='popup_header'>{header}</h1>
                 <p className='popup_text'>{text}</p>
                 <span className='popup_close' onClick={close}>
