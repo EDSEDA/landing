@@ -17,8 +17,18 @@ export class Store {
 
     popupType: PopupType = PopupType.INVISIBLE;
 
+    sideMenuOpened = false;
+
     setPopupType = (popupType: PopupType) => {
         this.popupType = popupType;
+    }
+
+    toggleSideMenuOpened = () => {
+        this.sideMenuOpened = !this.sideMenuOpened;
+    }
+
+    closeSideMenu = () => {
+        this.sideMenuOpened = false;
     }
 
 }
