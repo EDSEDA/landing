@@ -3,7 +3,7 @@ FROM node:20 as build
 WORKDIR /build
 
 COPY package.json .
-RUN npm i
+RUN npm install --verbose
 
 COPY public/ public/
 COPY src/ src/
@@ -15,12 +15,12 @@ COPY vite.config.ts .
 
 RUN npm run build
 
-FROM node:20
+FROM node:20 as runtime
 
 WORKDIR /app
 
 COPY server.package.json package.json
-RUN npm i
+RUN npm install --verbose
 
 COPY --from=build /build/dist/ dist/
 COPY ssl/ ssl/

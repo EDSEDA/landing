@@ -13,5 +13,11 @@
 
 ### Production build
 
-- `sudo docker build --tag 'landing' .`
-- `sudo docker run -dp 127.0.0.1:443:443 'landing'`
+- https://docs.docker.com/engine/install/ubuntu/
+- `sudo docker cpmpose build`
+- `sudo docker compose up -d`
+- `sudo docker compose logs`
+
+### Deploy
+
+- Example `./deploy.sh your.ip`

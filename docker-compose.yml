@@ -1,0 +1,6 @@
+services:
+  landing:
+    build: .
+    ports:
+      - 443:443
+    command: [ "npm", "run", "start:prod" ]
