@@ -259,6 +259,7 @@ export default function Main () {
                 <p className='form_caption'>Отправляя заявку, соглашаюсь с <Link className='policy-link' smooth to='/policy#top'>политикой конфиденциальности</Link></p>
                 <div className='form_submit'>
                   <Button className='form_submit-button' type='submit'>
+                    <p className='form_submit-button-text'>ОТПРАВИТЬ ЗАЯВКУ</p>
                     <img className='button_big-right-arrow' src={arrowRightIcon}/>
                   </Button>
                 </div>

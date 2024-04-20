@@ -1,7 +1,7 @@
 .header {
     box-sizing: border-box;
     width: 100%;
-    padding: 48px 150px;
+    padding: 48px 50px;
     z-index: 2;
 }
 
@@ -25,7 +25,7 @@
 .header-list {
     display: flex;
     align-items: center;
-    gap: 20px;
+    gap: 40px;
 }
 
 .list_item {
@@ -118,6 +118,12 @@
   border-top: 1px solid white;
 }
 
+@media screen and (max-width: 1400px) {
+    .header-list {
+        gap: 20px;
+    }
+}
+
 @media screen and (max-width: 1200px) {
     .main-logo {
         height: 43px;
@@ -127,6 +133,7 @@
         position: fixed;
         background: #111833;
         box-shadow: 0px 0px 20px 0px #FFFFFF20;
+        padding: 20px 15px;
     }
 
     .header-list, .header_request-button {
@@ -146,11 +153,5 @@
         gap: 20px;
         text-align: center;
         padding: 20px 60px 30px 60px;
-    }
-}
-
-@media screen and (max-width: 1400px) {
-    .header {
-        padding: 20px 15px;
     }
 }

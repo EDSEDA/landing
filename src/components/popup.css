@@ -40,7 +40,9 @@
 }
 
 .popup_text li {
-    list-style: inside;
+    padding-left: 8px;
+    margin-left: 20px;
+    list-style: url('../assets/bullet.svg');
 }
 
 .popup_close {

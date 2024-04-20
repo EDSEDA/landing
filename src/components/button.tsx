@@ -1,7 +1,8 @@
 import { PropsWithChildren, ButtonHTMLAttributes } from "react";
-import cn from 'classnames'
-import './button.css';
 import { HashLink as Link } from "react-router-hash-link";
+import cn from 'classnames'
+
+import './button.css';
 
 interface ButtonProps extends PropsWithChildren, ButtonHTMLAttributes<HTMLButtonElement> {
     href?: string;

@@ -126,7 +126,7 @@
 }
 
 .mega-button {
-    width: 50%;
+    min-width: 30%;
     margin-top: 80px;
 }
 
@@ -160,14 +160,16 @@
     height: 100%;
 }
 
-.learning-card_item {
-    list-style: square;
-    list-style-position: inside;
+.learning-card_list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.howto-scheme {
-    background: radial-gradient(318.12% 393.36% at 109.38% 96.28%, rgba(56, 114, 255, 0) 0%, rgba(56, 114, 255, 0.14) 100%);
-    box-shadow: 0px 0px 40px 5px rgba(21, 20, 251, 0.21);
+.learning-card_item {
+    margin-left: 20px;
+    padding-left: 8px;
+    list-style: url('../assets/bullet.svg');
 }
 
 .howto-scheme.__vertical {
@@ -277,12 +279,21 @@
 }
 
 .form_input {
+    box-sizing: border-box;
     width: 100%;
+    padding: 15px;
     font-size: 24px;
     border: none;
     border-bottom: 2px solid #3470FF;
     background-color: transparent;
     color: white;
+
+    transition: border-bottom-width 0.5s;
+}
+
+.form_input:focus {
+    outline: none;
+    border-bottom-width: 4px;
 }
 
 .form_input.__error {
@@ -321,9 +332,30 @@
     border: 2px solid rgba(52, 112, 255);
     box-shadow: 0px 0px 20px 5px rgba(21, 20, 251, 0.21);
     cursor: pointer;
-    width: 545px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: end;
+    align-items: center;
+    gap: 20px 100px;
+}
+
+.form_submit-button:hover {
+    background-color: #3470FF;
+    border-color: #3470FF;
+}
+
+.form_submit-button:hover .button_big-right-arrow {
+    filter: brightness(0) invert(1);
+}
+
+.form_submit-button-text {
+    font-size: 28px;
+    font-weight: 500;
+    visibility: hidden;
+}
+
+.form_submit-button:hover .form_submit-button-text {
+    visibility: visible;
 }
 
 .button_big-right-arrow {
@@ -535,6 +567,10 @@
     .contacts-card_position,
     .contacts-card_contact {
         font-size: 14px;
+    }
+
+    .form_submit-button-text {
+        font-size: 20px;
     }
 }
 
