@@ -1,10 +1,10 @@
-import dotenv from 'dotenv';
-import bodyParser from 'body-parser';
-import cors from 'cors';
-import express from 'express';
-import nodemailer from 'nodemailer';
-import fs from 'fs';
-import https from 'https';
+const dotenv = require('dotenv');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const express = require('express');
+const nodemailer = require('nodemailer');
+const fs = require('fs');
+const https = require('https');
 
 
 dotenv.config();
@@ -23,7 +23,7 @@ function initMailTransporter() {
   return new Promise((res, rej) => {
     transporter.verify(function (error, success) {
       if (error) {
-        rej(error.message);
+        rej(error);
       } else {
         console.log("Mail transporter is ready");
         res(transporter);
@@ -32,51 +32,60 @@ function initMailTransporter() {
   });
 }
 
-const transporter = await initMailTransporter();
+function runServer(transporter) {
+  const port = process.env.PORT || 443;
 
-const port = process.env.PORT || 443;
-
-const options = {
-  cert: fs.readFileSync('./ssl/cert.pem'),
-  key: fs.readFileSync('./ssl/key.pem'),
-};
-
-const app = express();
-
-app.use(cors());
-app.use(bodyParser.json());
-
-app.use(express.static('dist'));
-
-app.post('/request', async (req, res) => {
-  const body = req.body;
-  const { name, mail, comment } = body;
-  console.log(`Got request with data: name=${name}; mail=${mail}; comment=${comment}`);
-
-  try {
-    const result = await transporter.sendMail({
-      from: process.env.ROBOT_LOGIN,
-      to: process.env.RECIEVERS_LOGINS,
-      subject: '[NEW_REQUEST]',
-      html:
-        `<h3>New request:</h3>
-        <ul>
-          <li>Name: ${comment}</li>
-          <li>Mail: ${mail}</li>
-          <li>Comment: ${comment}</li>
-        </ul>`,
-    });
+  const options = {
+    cert: fs.readFileSync('./ssl/cert.pem'),
+    key: fs.readFileSync('./ssl/key.pem'),
+  };
   
-    console.log(`Message sent: name=${name}; mail=${mail}; comment=${comment}`);
-    res.sendStatus(200);
-  } catch(e) {
-    console.log(`Error while sending message: name=${name}; mail=${mail}; comment=${comment}\nError:${e.message}`);
-    res.sendStatus(500);
-  }
-});
+  const app = express();
+  
+  app.use(cors());
+  app.use(bodyParser.json());
+  
+  app.use(express.static('dist'));
 
-https
-  .createServer(options, app)
-  .listen(port, () => {
-  console.log(`Listening on port ${port}`);
-});
+  app.post('/request', async (req, res) => {
+    const body = req.body;
+    const { name, mail, comment } = body;
+    console.log(`Got request with data: name=${name}; mail=${mail}; comment=${comment}`);
+  
+    try {
+      // const result = await transporter.sendMail({
+      //   from: process.env.ROBOT_LOGIN,
+      //   to: process.env.RECIEVERS_LOGINS,
+      //   subject: '[NEW_REQUEST]',
+      //   html:
+      //     `<h3>New request:</h3>
+      //     <ul>
+      //       <li>Name: ${comment}</li>
+      //       <li>Mail: ${mail}</li>
+      //       <li>Comment: ${comment}</li>
+      //     </ul>`,
+      // });
+    
+      console.log(`Message sent: name=${name}; mail=${mail}; comment=${comment}`);
+      res.sendStatus(200);
+    } catch(e) {
+      console.log(`Error while sending message: name=${name}; mail=${mail}; comment=${comment}\nError:${e.message}`);
+      res.sendStatus(500);
+    }
+  });
+  
+  https
+    .createServer(options, app)
+    .listen(port, () => {
+    console.log(`Listening on port ${port}`);
+  });
+}
+
+runServer()
+// initMailTransporter()
+//   .then((transporter) => {
+//     runServer(transporter);
+//   })
+//   .catch((e) => {
+//     console.log(e.message);
+//   });

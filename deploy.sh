@@ -42,5 +42,8 @@ ssh "root@$1" << EOF
     cd ~/landing
     docker compose build
     docker compose up -d
+
+    echo "sleeping 5s..."
+    sleep 5
     docker compose logs
 EOF
