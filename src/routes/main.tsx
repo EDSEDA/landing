@@ -22,8 +22,8 @@ import cashierImage from '/cashier.svg'
 import sphere1Image from '/sphere1.svg'
 import sphere2Image from '/sphere2.svg'
 import sphere3Image from '/sphere3.svg'
-import ceoPhoto from '/face-stub.jpg'
-import sellerPhoto from '/face-stub.jpg'
+import ceoPhoto from '/kostylev.png'
+import sellerPhoto from '/bondarenko.png'
 
 
 import './main.css'
