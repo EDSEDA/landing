@@ -22,8 +22,8 @@ import cashierImage from '/cashier.svg'
 import sphere1Image from '/sphere1.svg'
 import sphere2Image from '/sphere2.svg'
 import sphere3Image from '/sphere3.svg'
-import ceoPhoto from '/kostylev.png'
-import sellerPhoto from '/bondarenko.png'
+import ceoPhoto from '/Kostylev.png'
+import sellerPhoto from '/Bondarenko.png'
 
 
 import './main.css'
@@ -274,8 +274,8 @@ export default function Main () {
                   <div className='contacts-card_info'>
                     <h3 className='contacts-card_name'>Костылев Иван</h3>
                     <p className='contacts-card_position'>Генеральный директор</p>
-                    <p className='contacts-card_contact'>+7 (900) 000 - 00 - 00</p>
-                    <p className='contacts-card_contact'>grifon.vision@gmail.com</p>
+                    <p className='contacts-card_contact'>+7 (922) 383 - 04 -59</p>
+                    <p className='contacts-card_contact'>i.kostylev@grifon-vision.com</p>
                   </div>
                 </div>
                 <div className='contacts-card'>
@@ -283,8 +283,8 @@ export default function Main () {
                   <div className='contacts-card_info'>
                     <h3 className='contacts-card_name'>Бондаренко Андрей</h3>
                     <p className='contacts-card_position'>Менеджер по продажам</p>
-                    <p className='contacts-card_contact'>+7 (900) 000 - 00 - 00</p>
-                    <p className='contacts-card_contact'>grifon.vision@gmail.com</p>
+                    <p className='contacts-card_contact'>+7 (916) 933 - 25 - 32</p>
+                    <p className='contacts-card_contact'>a.bondarenko@grifon-vision.com</p>
                   </div>
                 </div>
               </div>
