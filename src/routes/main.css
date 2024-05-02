@@ -205,8 +205,8 @@
     border-radius: 30px;
 }
 
-.proposal-card {
-    margin-top: 100px;
+.proposal-header {
+    margin-bottom: 80px;
 }
 
 .proposal-card_img {
@@ -371,10 +371,28 @@
     flex-wrap: wrap;
 }
 
+.contacts-cards_subitems {
+    margin-top: 60px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    gap: 60px;
+    flex-wrap: wrap;
+}
+
 .contacts-card {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 40px;
+}
+
+.contacts-card:not(.__vertical) {
+    flex-basis: 0;
+    flex-shrink: 0;
+}
+
+.__vertical {
+    grid-template: 1fr 200px / 1fr;
 }
 
 .contacts-card_img {
@@ -383,15 +401,15 @@
     object-fit: cover;
     box-sizing: border-box;
     border-radius: 10px;
-    border: 4px solid #3470FF;
-    border-top: none;
-    border-left: none;
+    margin: 0 auto;
 }
 
 .contacts-card_info {
     display: flex;
     flex-direction: column;
     gap: 20px;
+    margin: 0 auto;
+    white-space: nowrap;
 }
 
 .contacts-card_name {
@@ -492,6 +510,10 @@
         font-size: 16px;
     }
 
+    .proposal-header {
+        margin-bottom: 40px;
+    }
+
     .proposal-list, .learning-list {
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
@@ -516,7 +538,7 @@
 
     .proposal-card_img {
         left: -30px;
-        top: -50px;
+        top: -80px;
     }
 
     .proposal-card_more {
@@ -547,7 +569,7 @@
     }
 
     .contacts-card {
-        grid-template-columns: 120px 1fr;
+        grid-template: 1fr 120px / 1fr;
         gap: 30px;
     }
 

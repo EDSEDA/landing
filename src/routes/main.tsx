@@ -22,8 +22,13 @@ import cashierImage from '/cashier.svg'
 import sphere1Image from '/sphere1.svg'
 import sphere2Image from '/sphere2.svg'
 import sphere3Image from '/sphere3.svg'
+
 import ceoPhoto from '/Kostylev.png'
 import sellerPhoto from '/Bondarenko.png'
+import ctoPhoto from '/Vorkov.png'
+import designerPhoto from '/Karatetskaya.png'
+import dev1Photo from '/Popov.png'
+import dev2Photo from '/Sulimenko.png'
 
 
 import './main.css'
@@ -99,7 +104,7 @@ export default function Main () {
                 <p className='preview_text'>
                   Система персональных рекомендаций в оффлайне. Сделайте шаг вперед в программе лояльности.
                 </p>
-                <img className='preview_img' src={cashierProcessImage} loading='lazy'/>
+                <img className='preview_img' src={cashierProcessImage}/>
               </div>
               <div className='tags'>
                 <div className='tag-card __blue'>
@@ -154,8 +159,8 @@ export default function Main () {
 
             <section className='section' id='howto'>
               <h2 className='section_header' style={{marginBottom: 80}}>Как это работает?</h2>
-              <img className='howto-scheme __horizontal' src={howtoScheme} loading='lazy'/>
-              <img className='howto-scheme __vertical' src={howtoVerticalScheme} loading='lazy'/>
+              <img className='howto-scheme __horizontal' src={howtoScheme}/>
+              <img className='howto-scheme __vertical' src={howtoVerticalScheme}/>
             </section>
 
             <section className='section appearance'>
@@ -166,7 +171,7 @@ export default function Main () {
                   Для поощрения продаж есть возможность установить персональные скидки на отдельные товары из рекомендация для каждого клиента.
                 </p>
               </div>
-              <img className='appearance_img' src={cashierImage} loading='lazy'/>
+              <img className='appearance_img' src={cashierImage}/>
             </section>
 
             <section className='section'>
@@ -200,10 +205,10 @@ export default function Main () {
             </section>
 
             <section className='section' id='proposal'>
-              <h2 className='section_header'>Наше предложение</h2>
+              <h2 className='section_header proposal-header'>Наше предложение</h2>
               <div className='proposal-list'>
                 <div className='proposal-card'>
-                  <img className='proposal-card_img' src={sphere1Image} loading='lazy'/>
+                  <img className='proposal-card_img' src={sphere1Image}/>
                   <h3 className='proposal-card_header'>Сбор и хранение данных</h3>
                   <p className='proposal-card_text'>Идентифицируем каждого клиента, собираем и анализируем данные о покупках клиентов</p>
                   <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.STORING_MORE)}>
@@ -212,7 +217,7 @@ export default function Main () {
                   </Button>
                 </div>
                 <div className='proposal-card'>
-                  <img className='proposal-card_img' src={sphere2Image} loading='lazy'/>
+                  <img className='proposal-card_img' src={sphere2Image}/>
                   <h3 className='proposal-card_header'>Персональные рекомендации</h3>
                   <p className='proposal-card_text'>Выдаем персональные рекомендации для каждого клиента с гибкой системой изменения</p>
                   <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.RECOMMENDATION_MORE)}>
@@ -221,7 +226,7 @@ export default function Main () {
                   </Button>
                 </div>
                 <div className='proposal-card'>
-                  <img className='proposal-card_img' src={sphere3Image} loading='lazy'/>
+                  <img className='proposal-card_img' src={sphere3Image}/>
                   <h3 className='proposal-card_header'>Интеграция в кассовую систему</h3>
                   <p className='proposal-card_text'>По запросу полностью интегрируемся в вашу систему, делаем дизайн рекомендаций для вашего бренда</p>
                   <Button clear className='proposal-card_more' onClick={() => store.setPopupType(PopupType.INTEGRATION_MORE)}>
@@ -270,7 +275,7 @@ export default function Main () {
               <h2 className='section_header'>Наши контакты</h2>
               <div className='contacts'>
                 <div className='contacts-card'>
-                  <img className='contacts-card_img' src={ceoPhoto} loading='lazy'/>
+                  <img className='contacts-card_img' src={ceoPhoto}/>
                   <div className='contacts-card_info'>
                     <h3 className='contacts-card_name'>Костылев Иван</h3>
                     <p className='contacts-card_position'>Генеральный директор</p>
@@ -279,12 +284,42 @@ export default function Main () {
                   </div>
                 </div>
                 <div className='contacts-card'>
-                  <img className='contacts-card_img' src={sellerPhoto} loading='lazy'/>
+                  <img className='contacts-card_img' src={sellerPhoto}/>
                   <div className='contacts-card_info'>
                     <h3 className='contacts-card_name'>Бондаренко Андрей</h3>
                     <p className='contacts-card_position'>Менеджер по продажам</p>
                     <p className='contacts-card_contact'>+7 (916) 933 - 25 - 32</p>
                     <p className='contacts-card_contact'>a.bondarenko@grifon-vision.com</p>
+                  </div>
+                </div>
+                <div className='contacts-cards_subitems'>
+                  <div className='contacts-card __vertical'>
+                    <img className='contacts-card_img' src={ctoPhoto}/>
+                    <div className='contacts-card_info'>
+                      <h3 className='contacts-card_name'>Ворков Никита</h3>
+                      <p className='contacts-card_position'>CTO</p>
+                    </div>
+                  </div>
+                  <div className='contacts-card __vertical'>
+                    <img className='contacts-card_img' src={designerPhoto}/>
+                    <div className='contacts-card_info'>
+                      <h3 className='contacts-card_name'>Каратецкая Мария</h3>
+                      <p className='contacts-card_position'>UI/UX дизайнер</p>
+                    </div>
+                  </div>
+                  <div className='contacts-card __vertical'>
+                    <img className='contacts-card_img' src={dev1Photo}/>
+                    <div className='contacts-card_info'>
+                      <h3 className='contacts-card_name'>Попов Александр</h3>
+                      <p className='contacts-card_position'>Разработчик</p>
+                    </div>
+                  </div>
+                  <div className='contacts-card __vertical'>
+                    <img className='contacts-card_img' src={dev2Photo}/>
+                    <div className='contacts-card_info'>
+                      <h3 className='contacts-card_name'>Сулименко Никита</h3>
+                      <p className='contacts-card_position'>Разработчик</p>
+                    </div>
                   </div>
                 </div>
               </div>
