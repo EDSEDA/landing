@@ -6,7 +6,7 @@ npm run build
 
 ssh "root@$1" << EOF
     sudo apt-get update
-    sudo apt-get install ca-certificates curl
+    sudo apt-get install -y ca-certificates curl
     sudo install -m 0755 -d /etc/apt/keyrings
     sudo curl -fsSL https://download.docker.com/linux/ubuntu/gpg -o /etc/apt/keyrings/docker.asc
     sudo chmod a+r /etc/apt/keyrings/docker.asc
@@ -22,6 +22,7 @@ ssh "root@$1" << EOF
 
     if [ -d "~/landing" ]; then
         cd ~/landing
+        docker compose logs
         docker compose stop
         rm -rf ~/landing
         mkdir ~/landing
@@ -40,6 +41,8 @@ scp -r docker-compose.yml "root@$1:~/landing/docker-compose.yml"
 
 ssh "root@$1" << EOF
     cd ~/landing
+    sudo cp -R ssl/. /usr/local/share/ca-certificates
+    sudo update-ca-certificates
     docker compose build
     docker compose up -d
 
